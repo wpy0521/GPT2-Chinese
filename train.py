@@ -5,7 +5,7 @@ import json
 import random
 import numpy as np
 import argparse
-from torch.utils.tensorboard import SummaryWriter
+# from torch.utils.tensorboard import SummaryWriter
 from datetime import datetime
 from tqdm import tqdm
 from torch.nn import DataParallel
@@ -106,7 +106,7 @@ def main():
     num_pieces = args.num_pieces
     min_length = args.min_length
     output_dir = args.output_dir
-    tb_writer = SummaryWriter(log_dir=args.writer_dir)
+    # tb_writer = SummaryWriter(log_dir=args.writer_dir)
     assert log_step % gradient_accumulation == 0
 
     if not os.path.exists(output_dir):
@@ -213,7 +213,7 @@ def main():
                     optimizer.zero_grad()
                     scheduler.step()
                 if (overall_step + 1) % log_step == 0:
-                    tb_writer.add_scalar('loss', loss.item() * gradient_accumulation, overall_step)
+                    # tb_writer.add_scalar('loss', loss.item() * gradient_accumulation, overall_step)
                     print('now time: {}:{}. Step {} of piece {} of epoch {}, loss {}'.format(
                         datetime.now().hour,
                         datetime.now().minute,
